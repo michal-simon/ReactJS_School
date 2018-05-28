@@ -226,6 +226,7 @@ class StudentLeaves extends React.Component{
 			 	{this.renderSuccess()}
 			  <div className="card-body text-center">
 			  	<div className="row">
+
 			  		<div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 					    <div className="row">
 					    	<div className="col-lg-12">
@@ -236,6 +237,7 @@ class StudentLeaves extends React.Component{
 					    </div>
 			  			<br/>
 			  			<div className="table-responsive">
+						  <Scrollbars speed={1} className="area-table-scroll location_st" horizontal={false} vertical={true} >
 						<table className="table ">
 						  <thead>
 						    <tr>
@@ -247,7 +249,9 @@ class StudentLeaves extends React.Component{
 						  </thead>
 						  {this.renderLeaves()}
 						</table>
+						</Scrollbars>
 						</div>
+						
 						<br/>
 			  		</div>
 			  		<div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
