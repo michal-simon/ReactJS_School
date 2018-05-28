@@ -8,6 +8,7 @@ import SearchList from './SearchList'
 import Select from '../common/Select'
 import  Scrollbars  from 'react-scrollbar';
 import { capitalize } from '../common/Helpers.js'
+import Pagination from'../common/Pagination'
 class Search extends React.Component{
 	getInitialState(){
 		return {
@@ -70,8 +71,9 @@ class Search extends React.Component{
 	}
 	passFilters(){
 		const{ last_value } = this.state
-
-		return last_value !="" ? +this.state[last_value] !="" ? "orderByChild="+last_value+"&equalTo="+capitalize(this.state[last_value])  :""  : ""
+		var query = last_value !="" ? this.state[last_value] !="" ? "orderByChild="+last_value+"&startAt="+capitalize(this.state[last_value])+"&endAt=" + capitalize(this.state[last_value]) + "z"  :""  : ""
+	
+		return query;
 	}
 
 	removeThFromString(value,name){
@@ -195,6 +197,7 @@ class Search extends React.Component{
 						
 				    </div>
 			    </Scrollbars>
+				<Pagination />
 			  </div>
 			</div>
 		)

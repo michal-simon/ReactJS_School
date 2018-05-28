@@ -21,6 +21,7 @@
     "react-day-picker": "^7.1.6",
     "react-dom": "^16.3.0",
     "react-loading": "^1.0.4",
+    "react-paginate": "^5.2.3",
     "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.0.6",
     "react-router": "^3.2.0",
