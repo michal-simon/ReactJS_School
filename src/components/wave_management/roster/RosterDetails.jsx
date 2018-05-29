@@ -57,7 +57,7 @@ class RosterDetails extends React.Component{
 			this.setState({message:"Roster is deleted"})
 
 			setTimeout(function(){
-				this_.props.router.push(window.basepath+'/listroster')
+				this_.props.router.push(window.basepath+'/Rosters')
 			},2000)	
 		}
 		
@@ -86,7 +86,7 @@ class RosterDetails extends React.Component{
 		return newValues
 	}
 	redirectOnRosters(){
-		this.props.router.push(window.basepath+'/listroster')
+		this.props.router.push(window.basepath+'/Rosters')
 	}
 	renderSuccess(){
 		return this.state.message?<div className="alert alert-success" role="alert">{this.state.message}</div>:null
@@ -103,7 +103,7 @@ class RosterDetails extends React.Component{
 			 <h5 className="card-title"> {this.props.roster.title}
 			 	<div className="float-right">
 			 		<button  onClick={this.handleDeleteRoster}  className="btn btn-md float-right bg-red b-round" type="button">Delete Roster</button>
-			 		<button  onClick={(e)=>this.props.router.push(window.basepath+'/newroster/'+params.id)}  className="btn btn-md float-right bg-warning b-round" type="button">  Edit Roster </button>
+			 		<button  onClick={(e)=>this.props.router.push(window.basepath+'/editroster/'+params.id)}  className="btn btn-md float-right bg-warning b-round" type="button">  Edit Roster </button>
 			 		<button style={{marginRight:"5px"}}  className="btn btn-md bg-principal b-round float-right" type="button" onClick={this.redirectOnRosters}> <i className="fa fa-arrow-left	"></i> Back to Roster List</button>
 			 	</div>
 			 </h5>

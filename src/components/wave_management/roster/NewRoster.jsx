@@ -125,10 +125,10 @@ class NewRoster extends React.Component{
 		},3000)
 	}
 	redirectOnStudent(id){
-		this.props.router.push(window.basepath+'/s-profile/'+id)
+		this.props.router.push(window.basepath+'/Profile/'+id)
 	}
 	redirectOnRosters(){
-		this.props.router.push(window.basepath+'/listroster')
+		this.props.router.push(window.basepath+'/Rosters')
 	}
 	renderStudents(){
 		const{ allstudents,students } = this.state

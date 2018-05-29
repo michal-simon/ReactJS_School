@@ -65,7 +65,7 @@ class App extends React.Component {
 		}else{
 			this.setState({role:"none"});
 			firebase.login(this.state).then((result) => {
-			 //  this_.props.router.push("/s-profile/"+result.user.uid)			
+			 //  this_.props.router.push("/Profile/"+result.user.uid)			
 			   this_.setRole(result.user.uid)
 			}, (error) => {
 			    this.setState({message:error.message})
@@ -91,7 +91,7 @@ class App extends React.Component {
 			  		this_.setState({role:role_name,profile:snapshot.val()})
 
 			  		if(result_id || Object.keys(params).length==0){
-			  			this_.props.router.push(window.basepath+"/studentleaves/"+userId)
+			  			this_.props.router.push(window.basepath+"/home/"+userId)
 			  		}
 			  		
 			  	}

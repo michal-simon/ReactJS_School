@@ -65,7 +65,7 @@ class StudentLeaves extends React.Component{
 			return null
 		}
 
-		this.props.router.push(window.basepath+'/leavedetails/'+params.id_student+"/"+id)
+		this.props.router.push(window.basepath+'/leave/'+params.id_student+"/"+id)
 	}
 	redirectOnNew(id){
 		this.props.router.push(window.basepath+'/NewLeave/'+id)

@@ -62,10 +62,10 @@ class Header extends React.Component {
 		switch(role){
 			
 			case"faculty":
-				link_ = window.basepath+"/f-my-profile/"+auth.uid
+				link_ = window.basepath+"/Faculty/Profile/"+auth.uid
 			break;
 			case"student":
-				link_ = window.basepath+"/s-profile/"+auth.uid
+				link_ = window.basepath+"/Student/Profile/"+auth.uid
 			break;
 		}
 		return link_
@@ -146,7 +146,7 @@ class Header extends React.Component {
 			      {
 			      	this.hasAuthorization('home-s') ? 
 				   		<li className={"nav-item " + this.renderLinkActive("home")}>
-				        	<Link onClick={(e)=>this.setActiveLink("home",e)}  to={window.basepath+'/studentleaves/'+auth.uid}  className="nav-link" href="#">Home <span className="sr-only">(current)</span></Link>
+				        	<Link onClick={(e)=>this.setActiveLink("home",e)}  to={window.basepath+'/home/'+auth.uid}  className="nav-link" href="#">Home <span className="sr-only">(current)</span></Link>
 				      	</li>
 				    : null
 			      }
@@ -168,7 +168,7 @@ class Header extends React.Component {
 			      {
 			      		this.hasAuthorization('roster') ?
 						      <li className={"nav-item " + this.renderLinkActive("roster")}>
-						        <Link onClick={(e)=>this.setActiveLink("roster",e)} to={window.basepath+'/listroster'} className="nav-link" href="#">Roster</Link>
+						        <Link onClick={(e)=>this.setActiveLink("roster",e)} to={window.basepath+'/Rosters'} className="nav-link" href="#">Roster</Link>
 						      </li>			      		
 			      		:null
 			      }

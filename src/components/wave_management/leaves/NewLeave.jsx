@@ -160,7 +160,7 @@ class NewLeave extends React.Component{
 	}
 	redirectOnStudent(){
 		const {params} = this.props
-		this.props.router.push(window.basepath+'/studentleaves/'+params.id_student)
+		this.props.router.push(window.basepath+'/home/'+params.id_student)
 	}
 	renderSuccess(){
 		return this.state.message?<div className="alert alert-success" role="alert">{this.state.message}</div>:null

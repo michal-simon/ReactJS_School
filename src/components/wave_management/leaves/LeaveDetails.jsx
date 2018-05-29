@@ -18,11 +18,11 @@ class LeaveDetails extends React.Component{
 		this.setMessage = this.setMessage.bind(this)
 	}
 	redirectBack(){
-		this.props.router.push(window.basepath+'/faculty-s-profile/'+this.props.params.id_student)
+		this.props.router.push(window.basepath+'/Student/'+this.props.params.id_student)
 	}
 	redirectBackStudent(){
 		const {params} = this.props
-		this.props.router.push(window.basepath+'/studentleaves/'+params.id_student)
+		this.props.router.push(window.basepath+'/home/'+params.id_student)
 	}
 	componentDidMount(){}
 	componentWillReceiveProps(nextProps){}
@@ -37,7 +37,7 @@ class LeaveDetails extends React.Component{
 		this.setMessage("Leave is approved",event)
 
 		setTimeout(function(){
-			this_.props.router.push(window.basepath+'/faculty-s-profile/'+params.id_student)
+			this_.props.router.push(window.basepath+'/Student/'+params.id_student)
 		},2000)	
 
 	}
@@ -51,7 +51,7 @@ class LeaveDetails extends React.Component{
 		this.setMessage("Leave is disapproved",event)
 
 		setTimeout(function(){
-			this_.props.router.push(window.basepath+'/faculty-s-profile/'+params.id_student)
+			this_.props.router.push(window.basepath+'/Student/'+params.id_student)
 		},2000)	
 	}
 	handleDeleteLeave(event){
@@ -63,7 +63,7 @@ class LeaveDetails extends React.Component{
 			this.setMessage("Leave is deleted",event)
 
 			setTimeout(function(){
-				this_.props.router.push(window.basepath+'/studentleaves/'+params.id_student)
+				this_.props.router.push(window.basepath+'/home/'+params.id_student)
 			},2000)	
 		}
 		
@@ -200,7 +200,7 @@ class LeaveDetails extends React.Component{
 	redirectOnNew(e){
 		e.preventDefault
 		const{params} = this.props
-		this.props.router.push(window.basepath+'/NewLeave/'+params.id_student+"/"+params.id_leave)
+		this.props.router.push(window.basepath+'/EditLeave/'+params.id_student+"/"+params.id_leave)
 	}
 	hasAuthorization(name){
 		const{ role } = this.props

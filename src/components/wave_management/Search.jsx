@@ -75,9 +75,9 @@ class Search extends React.Component{
 	}
 	redirectOn(id){
 		const{role} = this.props
-		let redirect_url = "s-profile"
+		let redirect_url = "Profile"
 		if(role=="faculty"){
-			redirect_url="faculty-s-profile"
+			redirect_url="Student"
 		}
 		this.props.router.push(window.basepath+'/'+redirect_url+'/'+id)
 	}
@@ -205,7 +205,7 @@ class Search extends React.Component{
 				   
 					  
 							{
-								this.state.list=="list"?<Scrollbars speed={1} className="area-table-scroll" horizontal={false} vertical={true} > <div className="row"><SearchList currentPage = {this.state.activePage} itemsPerPage = {this.state.itemsCountPerPage}  setTotalItems = {this.setTotalItems} filters={this.passFilters()} redirectOn={this.redirectOn} role={this.props.role} list={this.state.list}/></div> </Scrollbars>:null
+								this.state.list=="list"? <div className="row"><SearchList currentPage = {this.state.activePage} itemsPerPage = {this.state.itemsCountPerPage}  setTotalItems = {this.setTotalItems} filters={this.passFilters()} redirectOn={this.redirectOn} role={this.props.role} list={this.state.list}/></div>:null
 							}
 					
 			   

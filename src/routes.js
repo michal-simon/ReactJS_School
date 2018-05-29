@@ -76,16 +76,18 @@ export default function getRoutes(store,tr) {
 			<Route path={ pathWeb + "/" } component={Search} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/index" } component={Index} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/search" } component={Search} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/editroster/:id" }  component={NewRoster} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/newroster(/:id)" }  component={NewRoster} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/listroster"} component={ListRoster} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/Rosters"} component={ListRoster} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/rosterdetails/:id" } component={RosterDetails} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/studentleaves/:id_student"} component={StudentLeaves} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/leavedetails/:id_student/:id_leave"}  component={LeaveDetails} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/home/:id_student"} component={StudentLeaves} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/leave/:id_student/:id_leave"}  component={LeaveDetails} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/NewLeave/:id_student(/:id_leave)"} component={NewLeave} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/EditLeave/:id_student/:id_leave"} component={NewLeave} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/login"} component={Login} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/s-profile/:id"}   component={StudentProfile} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/faculty-s-profile/:id_student"}  component={FacultyProfile} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/f-my-profile/:id_faculty"}  component={FacultyMyProfile} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/Student/Profile/:id"}   component={StudentProfile} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/Student/:id_student"}  component={FacultyProfile} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/Faculty/Profile/:id_faculty"}  component={FacultyMyProfile} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/noauthorize"} component={NotAuthorized} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/noauthorize"} component={NotAuthorized} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/notfound"} component={NotFound} onLeave={callbackOnleave} />
