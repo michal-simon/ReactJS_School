@@ -68,7 +68,7 @@ class StudentLeaves extends React.Component{
 		this.props.router.push(window.basepath+'/leavedetails/'+params.id_student+"/"+id)
 	}
 	redirectOnNew(id){
-		this.props.router.push(window.basepath+'/newleave/'+id)
+		this.props.router.push(window.basepath+'/NewLeave/'+id)
 	}
 	handleAddLocation(row,event){
 		event.preventDefault()

@@ -8,10 +8,13 @@ import SearchList from './SearchList'
 import Select from '../common/Select'
 import  Scrollbars  from 'react-scrollbar';
 import { capitalize } from '../common/Helpers.js'
-import Pagination from'../common/Pagination'
+import Pagination from "react-js-pagination";
+
 class Search extends React.Component{
-	getInitialState(){
-		return {
+	constructor(props){
+		super(props)
+		this.state = {
+			activePage: 1,
 			first_name:"",
 			last_name:"",
 			current_location:"",
@@ -20,18 +23,23 @@ class Search extends React.Component{
 			gender:"",
 			list:"table",
 			classScroller:"area-table-scroll",
+			totalItemsCount:0,
+			itemsCountPerPage:5,
 			last_value:"",
 			locations:{},
 			dorms:{},
 			grades:{}
-		}
-	}
-	constructor(props){
-		super(props)
-		this.state = this.getInitialState()
+		  };
+		// this.state = this.getInitialState();
+		this.setTotalItems = this.setTotalItems.bind(this)
 		this.redirectOn = this.redirectOn.bind(this)
 		this.handleSearch = this.handleSearch.bind(this)
 		this.handleList = this.handleList.bind(this)
+		this.handlePageChange = this.handlePageChange.bind(this)
+	}
+	handlePageChange(pageNumber) {
+	
+		this.setState({activePage: pageNumber});
 	}
 	componentDidMount(){
 		const{firebase,auth,params}  = this.props
@@ -53,6 +61,10 @@ class Search extends React.Component{
 	handleSearch(event){
 		this.setState({[event.target.name]:event.target.value})
 		this.setState({last_value:event.target.name})
+	}
+	setTotalItems(n){
+		this.setState({totalItemsCount:n})
+		
 	}
 	handleList(name,ee){
 		let classScroller="area-table-scroll"
@@ -118,6 +130,7 @@ class Search extends React.Component{
 	}
 	render(){
 		const{locations,grades,dorms} = this.state
+	
 		return(
 			<div className="card m-top-default">
 			 <h5 className="card-title">
@@ -174,31 +187,39 @@ class Search extends React.Component{
 			  			</div>		  				
 		  			</div>
 			  		<div className="col-lg-12">
-						<Scrollbars speed={1} className={this.state.classScroller} horizontal={false} vertical={true} >
+			
 						<div className="table-responsive-xl">
 						<table className="table">
 						  <thead>
 						    {this.renderHeaderLabel()}
 						  </thead>
 							{
-								this.state.list=="table"?<SearchList filters={this.passFilters()} redirectOn={this.redirectOn} role={this.props.role} list={this.state.list}/>:null
+								this.state.list=="table"?<SearchList currentPage = {this.state.activePage} itemsPerPage = {this.state.itemsCountPerPage} setTotalItems = {this.setTotalItems} filters={this.passFilters()} redirectOn={this.redirectOn} role={this.props.role} list={this.state.list}/>:null
 							}
 						</table>
 						</div>
-						</Scrollbars>
+			
 			  		</div>
 			  	</div>
-			  	<Scrollbars speed={1} className="area-table-scroll" horizontal={false} vertical={true} >
-				    <div className="row">
+			  	
+				   
 					  
 							{
-								this.state.list=="list"?<SearchList filters={this.passFilters()} redirectOn={this.redirectOn} role={this.props.role} list={this.state.list}/>:null
+								this.state.list=="list"?<Scrollbars speed={1} className="area-table-scroll" horizontal={false} vertical={true} > <div className="row"><SearchList currentPage = {this.state.activePage} itemsPerPage = {this.state.itemsCountPerPage}  setTotalItems = {this.setTotalItems} filters={this.passFilters()} redirectOn={this.redirectOn} role={this.props.role} list={this.state.list}/></div> </Scrollbars>:null
 							}
-						
-				    </div>
-			    </Scrollbars>
-				<Pagination />
+					
+			   
+				
 			  </div>
+			  <div className = "text-center">
+        <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={this.state.itemsCountPerPage}
+          totalItemsCount={this.state.totalItemsCount}
+          pageRangeDisplayed={5}
+          onChange={this.handlePageChange}
+        />
+      </div>				
 			</div>
 		)
 	}

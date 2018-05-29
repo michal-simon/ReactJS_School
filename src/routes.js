@@ -81,7 +81,7 @@ export default function getRoutes(store,tr) {
 			<Route path={ pathWeb + "/rosterdetails/:id" } component={RosterDetails} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/studentleaves/:id_student"} component={StudentLeaves} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/leavedetails/:id_student/:id_leave"}  component={LeaveDetails} onLeave={callbackOnleave} />
-			<Route path={ pathWeb + "/newleave/:id_student(/:id_leave)"} component={NewLeave} onLeave={callbackOnleave} />
+			<Route path={ pathWeb + "/NewLeave/:id_student(/:id_leave)"} component={NewLeave} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/login"} component={Login} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/s-profile/:id"}   component={StudentProfile} onLeave={callbackOnleave} />
 			<Route path={ pathWeb + "/faculty-s-profile/:id_student"}  component={FacultyProfile} onLeave={callbackOnleave} />

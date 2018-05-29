@@ -200,7 +200,7 @@ class LeaveDetails extends React.Component{
 	redirectOnNew(e){
 		e.preventDefault
 		const{params} = this.props
-		this.props.router.push(window.basepath+'/newleave/'+params.id_student+"/"+params.id_leave)
+		this.props.router.push(window.basepath+'/NewLeave/'+params.id_student+"/"+params.id_leave)
 	}
 	hasAuthorization(name){
 		const{ role } = this.props

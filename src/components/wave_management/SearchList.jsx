@@ -6,11 +6,21 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import browserHistory from 'history/createBrowserHistory'
 import Loading 		from 'react-loading';
 
+
 class SearchList extends React.Component{
 	constructor(props){
 		super(props)
+		this.state = {
+			activePage: 15
+		};
 	}
+	handlePageChange(pageNumber) {
 
+		this.setState({activePage: pageNumber});
+	}
+	componentDidMount(){
+		this.props.setTotalItems(33);
+	}
 	redirectOn(id,e){
 		this.props.redirectOn(id)
 	}
@@ -26,7 +36,9 @@ class SearchList extends React.Component{
 			return loc =="off" ? " rouded-location-red ":" rouded-location-green "
 		}
 		const studentsList = ()=>{
-			return Object.keys(students).map((row,k)=>
+	
+			var filtered = Object.keys(students).slice((this.props.currentPage - 1) * this.props.itemsPerPage, (this.props.currentPage - 1) * this.props.itemsPerPage + this.props.itemsPerPage)
+			return filtered.map((row,k)=>
 				<div className="col-xs-6 col-sm-6 col-md-2 c_md_2 cursor-pointer" key={k}  onClick={(e)=>this.redirectOn(row,e)}>
 		            <img className="rounded-circle search-img bb" src={students[row].profile_picture} alt="Generic placeholder image" />
 		            <p className="info-list-st">
@@ -49,12 +61,11 @@ class SearchList extends React.Component{
 
 		if(!students){
 			return <tr><td colSpan="6"> <div className="text-center">No results </div></td></tr>
-
 		}
 
 		const studentsList = ()=>{
-			return Object.keys(students).map((row,k)=>
-				  	<tr className="cursor-pointer"  onClick={(e)=>this.redirectOn(row,e)} key={k}>
+			var filtered = Object.keys(students).slice((this.props.currentPage - 1) * this.props.itemsPerPage, (this.props.currentPage - 1) * this.props.itemsPerPage + this.props.itemsPerPage)
+			return filtered.map((row,k)=>	  	<tr className="cursor-pointer"  onClick={(e)=>this.redirectOn(row,e)} key={k}>
 				      	<td>{students[row].first_name}</td>
 				       	<td>{students[row].last_name}</td>
 				       	<td>{students[row].grade}</td>
@@ -67,8 +78,7 @@ class SearchList extends React.Component{
 		return( <tbody>{studentsList()}</tbody>)
 	}
 	render(){
-		return this.props.list=="list" ? this.renderStudentsRound() : this.renderStudents()
-		
+		return this.props.list=="list" ? this.renderStudentsRound() : this.renderStudents() 
 	}
 }
 

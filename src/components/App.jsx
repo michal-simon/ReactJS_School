@@ -50,8 +50,7 @@ class App extends React.Component {
 		const {firebase} = this.props
 		firebase.logout()
 	}
-	renderLogin(){
-		console.log('I am here')
+	renderLogin(){		
 		return <div className="login-container bg-login"> <Login login ={this.handleLogin} message={this.state.message} handleChange={this.handleChange} /> </div>
 	}
 	handleLogin(event){
@@ -66,8 +65,7 @@ class App extends React.Component {
 		}else{
 			this.setState({role:"none"});
 			firebase.login(this.state).then((result) => {
-			 //  this_.props.router.push("/s-profile/"+result.user.uid)
-			   console.log('handlelogin', result.user.uid)
+			 //  this_.props.router.push("/s-profile/"+result.user.uid)			
 			   this_.setRole(result.user.uid)
 			}, (error) => {
 			    this.setState({message:error.message})
@@ -76,8 +74,7 @@ class App extends React.Component {
 
 	}
 	setRole(result_id){
-		const{ auth,profile,firebase,params } =  this.props
-		console.log('authentication', auth.uid, result_id)
+		const{ auth,profile,firebase,params } =  this.props		
 		let userId = auth.uid;
 		let this_ = this
 		if( ( userId && !this.state.role ) || result_id ){
@@ -119,8 +116,7 @@ class App extends React.Component {
 	renderApp = () => {
 		const{ auth,profile, children } =  this.props
 		this.setRole(false)
-		let this_ = this
-		console.log('this.state.role', this.state.role, auth.uid, this.props.children)
+		let this_ = this		
 		return(<div>
 					<Header router={this.props.router} session={this.props.session} dispatch={this.props.dispatch} loading_cache={this.props.loading_cache} singOut={this.singOut} role={this.state.role} auth={this.props.auth} profile={this.state.profile} />
 						<div className="container">
@@ -136,8 +132,7 @@ class App extends React.Component {
 	}
 	render() {
 
-		const{ loadingApp,auth,firebase } =  this.props
-		console.log('children', auth.uid, auth.isLoaded)
+		const{ loadingApp,auth,firebase } =  this.props		
 		return this.state.role != "none" ? (
 
 				<div>
